@@ -18,15 +18,16 @@ reducers:{
         const itemIndex=state.items.findIndex((item)=>item.id===id);
         if(itemIndex!=-1)
         {
-            state.totalAmount-=state.items[itemIndex].price;
-            state.items.splice(itemIndex,1); // item ko cart se remove karte hain
+            const itemPrice = state.items[itemIndex].price;
+            state.items.splice(itemIndex, 1);
+            state.totalAmount -= itemPrice;
         }
 
     }
 }    
 })
 
-export const { addItem, removeItem, clearCart } = CartSlice.actions;
+export const { addItem, removeItem } = CartSlice.actions;
 
 
 export default CartSlice.reducer;
